@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #timeSlider {
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        bottom: 20px;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.25/"></script>
+
+    <script>
+      require(["esri/config", 
+      //"esri/Map",
+      
+      "esri/WebMap", 
+      "esri/views/MapView",
+      "esri/widgets/ScaleBar",
+      "esri/widgets/Legend","esri/widgets/TimeSlider"], function(esriConfig, WebMap, MapView,ScaleBar,Legend,TimeSlider) {
+
+       
+        esriConfig.apiKey = "AAPKded51e04852e4a99b70d21927dbd7628oCCtmkfSggC3EoCQVgiTa5426mCw7SnK4vykCGXENbGxJSbOjlvt0_o2ociHMaH7";
+        //esriConfig.portalUrl = "https://ucr.maps.arcgis.com/portal";
+
+        
+        
+        // where the map is called
+
+        const webmap = new WebMap({
+        portalItem: {
+          //id:"ac82a2a069c84a4ab63020b0e84aaf6f"
+          //id:"c65bd742c90f4597adc4150c1ebdfa7a"
+          id: "e2de6a11d5ed4b3c9f726af7d6bf6144"
+          
+        }
+
+        
+      });
+      const view = new MapView({
+        map: webmap,
+        container: "viewDiv",
+        zoom: 7
+      
+      });
+      const legend = new Legend({
+        view: view
+      });
+      view.ui.add(legend, "top-right");
+       // time slider widget initialization
+       TimeSlider.getPropertiesFromWebMap(webmap).then((timeSliderSettings) => {
+  const timeSlider = new TimeSlider({
+    ...timeSliderSettings,
+    view,
+    container: 'timeSlider'
+  });
+});
+//const { unit, value } = timeSlider.stops.interval;
+//console.log(`The stop interval is every ${value} ${unit}.`); 
+
+      
+      
+
+      // add the UI for a title
+      //view.ui.add("titleDiv", "top-right");
+
+      });
+      
+
+     
+      view.ui.add(titleDiv, "top-left");
+      
+      
+
+      
+    </script>
+
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+    <div id="timeSlider"></div>
+  </body>
