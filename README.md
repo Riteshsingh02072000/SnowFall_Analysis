@@ -16,3 +16,6 @@ The dataset was divided into two parts: weather data and mapping. The mapping da
 
 **Conclusion:**
 The results from this project provided a comparative analysis of historical snowfall patterns using big data technologies. We visualized the data using ArcGIS, showcasing snowfall predictions for multiple years. This project can be expanded further to include global datasets for a worldwide snowfall prediction.
+
+
+![Example Image](https://drive.google.com/file/d/1zDDy3hJIhbgcaic_6dhtZQgeO4ZII04G/view?usp=drive_link "An Example Image")
